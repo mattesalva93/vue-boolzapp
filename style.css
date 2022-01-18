@@ -1,0 +1,50 @@
+.ms_contenitore-app{
+    height: 1300px;
+}
+.ms_contenitore-app > div {
+    height: inherit;
+}
+
+.ms_background_green{
+    height: 150px;
+    background-color: #009788;
+    width: 100%;
+}
+
+.ms_background_grey{
+    height: calc(100% - 150px);
+    background-color: #d9dbd6de;
+}
+
+.ms_messages-box{
+    height: 1150px;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%);
+    border: 1px solid black;
+    z-index: 999999999999;
+}
+.ms_messages-box > .row:nth-of-type(1){
+    height: 5%;
+}
+.ms_messages-box > .row:nth-of-type(2){
+    height: 95%;
+}
+.ms_userbar{
+    height: 100%;
+    background-color: #EDEDED;
+}
+.ms_userbar:nth-of-type(2){
+    border-left: solid 1px #DEE1E6;
+}
+
+.ms_profile-pic{
+    height:  40px;
+    width:  40px;
+    border-radius: 50%;
+}
+
+.ms_options-icons{
+    font-size: 1.3rem;
+}
+
