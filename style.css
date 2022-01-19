@@ -21,7 +21,7 @@
     left: 50%;
     top: 50px;
     transform: translate(-50%);
-    border: 1px solid black;
+    border: 1px solid #DEE1E6;
     z-index: 999999999999;
 }
 .ms_messages-box > .row:nth-of-type(1){
@@ -30,6 +30,7 @@
 .ms_messages-box > .row:nth-of-type(2){
     height: 95%;
 }
+
 .ms_userbar{
     height: 100%;
     background-color: #EDEDED;
@@ -37,14 +38,95 @@
 .ms_userbar:nth-of-type(2){
     border-left: solid 1px #DEE1E6;
 }
-
 .ms_profile-pic{
     height:  40px;
     width:  40px;
     border-radius: 50%;
 }
-
 .ms_options-icons{
     font-size: 1.3rem;
 }
-
+.ms_notifications-toggle{
+    height: 7%;
+    background-color: #9EE1FE;
+}
+.ms_notifications-toggle > i{
+    font-size: 1rem;
+    padding: 15px 13px;
+    border-radius: 50%;
+    background-color: #F6FAFB;
+}
+.ms_notifications-toggle span {
+    font-size: 0.8rem;
+}
+.ms_chat-search-bar{
+    height: 5%;
+    background-color:  #EDEDED;
+}
+.ms_chat-search-bar > input,
+.ms_input-message > input {
+    border-radius: 20px;
+    border: 1px solid white;
+    height: 70%;
+}
+.ms_chat-archiviate{
+    height: 4%;
+    background-color: #F6FAFB;
+}
+.ms_chat{
+    height: 84%;
+    background-color: #F6FAFB;
+}
+.ms_single-chat{
+    height: 5%;
+}
+.ms_chat-profile-pic{
+    height:  50px;
+    width:  50px;
+    border-radius: 50%;
+}
+.ms_single-chat span{
+    font-size: 0.8rem;
+}
+.ms_chat-info{
+    width: 85%;
+}
+.ms_message-hour{
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    padding-right: 10px;
+    color: lightgray
+}
+.ms_chat-conversation{
+    height: 94%;
+    background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
+    background-size:cover;
+    overflow-y: auto;
+}
+.ms_input-message{
+    height: 6%;
+    background-color: #F0F0F0;
+    border-left: solid 1px #DEE1E6;
+}
+.ms_input-message > i{
+    font-size: 1.5rem;
+    margin: 0 15px;
+}
+.ms_sent-message,
+.ms_recevied-message{
+    min-height: 50px;
+    border-radius: 20px;
+    background-color: #DCF8C6;
+    padding: 20px;
+    font-size: 1rem;
+    float: right;
+    max-width: 75%;
+}
+.ms_recevied-message{
+    background-color: #ffffff;
+    float: left;
+}
+.ms_chat-message-hour{
+    font-size: 0.7rem;
+    color: lightgray;
+}
