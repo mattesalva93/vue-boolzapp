@@ -1,9 +1,6 @@
 .ms_contenitore-app{
     height: 1300px;
 }
-.ms_contenitore-app > div {
-    height: inherit;
-}
 
 .ms_background_green{
     height: 150px;
@@ -12,12 +9,13 @@
 }
 
 .ms_background_grey{
-    height: calc(100% - 150px);
+    height: 1150px;
     background-color: #d9dbd6de;
 }
 
 .ms_messages-box{
     height: 1150px;
+    box-sizing: border-box;
     left: 50%;
     top: 50px;
     transform: translate(-50%);
@@ -101,7 +99,7 @@
     height: 94%;
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
     background-size:cover;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .ms_input-message{
     height: 6%;
