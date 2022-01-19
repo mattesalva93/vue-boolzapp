@@ -15,18 +15,20 @@
 
 .ms_messages-box{
     height: 1150px;
-    box-sizing: border-box;
+    max-height: 100%;
     left: 50%;
     top: 50px;
     transform: translate(-50%);
     border: 1px solid #DEE1E6;
     z-index: 999999999999;
+    overflow: hidden;
 }
 .ms_messages-box > .row:nth-of-type(1){
     height: 5%;
 }
 .ms_messages-box > .row:nth-of-type(2){
     height: 95%;
+
 }
 
 .ms_userbar{
@@ -74,6 +76,8 @@
 .ms_chat{
     height: 84%;
     background-color: #F6FAFB;
+    overflow-y: scroll;
+
 }
 .ms_single-chat{
     height: 5%;
@@ -96,13 +100,15 @@
     color: lightgray
 }
 .ms_chat-conversation{
+    max-height: 94%;
     height: 94%;
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
     background-size:cover;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 .ms_input-message{
     height: 6%;
+    width: 100%;
     background-color: #F0F0F0;
     border-left: solid 1px #DEE1E6;
 }
@@ -127,4 +133,7 @@
 .ms_chat-message-hour{
     font-size: 0.7rem;
     color: lightgray;
+}
+.ms_box-conversation{
+    max-height: 100%;
 }
