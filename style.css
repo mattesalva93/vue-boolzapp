@@ -81,17 +81,25 @@
     width:  50px;
     border-radius: 50%;
 }
-.ms_single-chat span{
-    font-size: 0.8rem;
-}
 .ms_chat-info{
     width: 85%;
 }
+.ms_chat-info > p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    font-size: 0.9rem;
+
+}
 .ms_message-hour{
-    margin-bottom: 20px;
     font-size: 0.9rem;
     padding-right: 10px;
     color: lightgray
+}
+.ms_box-conversation{
+    max-height: 100%;
+    height: 100%;
 }
 .ms_chat-conversation{
     height: 94%;
@@ -128,7 +136,27 @@
     font-size: 0.7rem;
     color: lightgray;
 }
-.ms_box-conversation{
-    max-height: 100%;
-    height: 100%;
+.ms_hidden-toggle{
+    position: relative;
+}
+.ms_hidden-toggle i{
+    display: none;
+}
+.ms_hidden-toggle:hover > i{
+    display: inline-block;
+}
+
+.ms_dropdown-message{
+    position:absolute;
+    top:15px;
+    right: 5px;
+    padding: 3px 9px;
+    background-color: white;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    display: none;
+}
+.active{
+    display: inline-block;
 }

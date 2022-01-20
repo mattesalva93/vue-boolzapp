@@ -4,6 +4,7 @@ let app = new Vue ({
         attivo: -1,
         messaggioScritto: "",
         inputUtente: "",
+        chatIndice: 0,
         contacts: [
             {
             name: 'Nonna',
@@ -13,17 +14,20 @@ let app = new Vue ({
                 {
                 date: '10/01/2020 15:30:55',
                 text: 'Hai portato a spasso il cane?',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
                 },
                 {
                 date: '10/01/2020 15:50:00',
                 text: 'Ricordati di dargli da mangiare',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
                 },
                 {
                 date: '10/01/2020 16:15:22',
                 text: 'Tutto fatto!',
-                status: 'received'
+                status: 'received',
+                dropdownShow: false
                 }
                 ],
             },
@@ -35,17 +39,20 @@ let app = new Vue ({
                 {
                 date: '20/03/2020 16:30:00',
                 text: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
                 },
                 {
                 date: '20/03/2020 16:30:55',
                 text: 'Bene grazie! Stasera ci vediamo?',
-                status: 'received'
+                status: 'received',
+                dropdownShow: false
                 },
                 {
                 date: '20/03/2020 16:35:00',
                 text: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
                 }
                 ],
             },
@@ -57,17 +64,23 @@ let app = new Vue ({
                 {
                 date: '28/03/2020 10:10:40',
                 text: 'La Marianna va in campagna',
-                status: 'received'
+                status: 'received',
+                dropdownShow: false
+
                 },
                 {
                 date: '28/03/2020 10:20:10',
                 text: 'Sicuro di non aver sbagliato chat?',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
+
                 },
                 {
                 date: '28/03/2020 16:15:22',
                 text: 'Ah scusa!',
-                status: 'received'
+                status: 'received',
+                dropdownShow: false
+
                 }
                 ],
             },
@@ -79,12 +92,16 @@ let app = new Vue ({
                 {
                 date: '10/01/2020 15:30:55',
                 text: 'Lo sai che ha aperto una nuova pizzeria?',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
+
                 },
                 {
                 date: '10/01/2020 15:50:00',
                 text: 'Si, ma preferirei andare al cinema',
-                status: 'received'
+                status: 'received',
+                dropdownShow: false
+
                 }
                 ],
             },
@@ -96,12 +113,14 @@ let app = new Vue ({
                 {
                 date: '11/02/2021 14:30:55',
                 text: 'Il nostro rapporto non funziona più, finisce qua!',
-                status: 'received'
+                status: 'received',
+                dropdownShow: false
                 },
                 {
                 date: '11/02/2021 14:32:00',
                 text: 'LUL',
-                status: 'sent'
+                status: 'sent',
+                dropdownShow: false
                 }
                 ],
             },
@@ -119,7 +138,8 @@ let app = new Vue ({
                 {
                 text: this.messaggioScritto,
                 date: '11/02/2021 14:32:00',
-                status: 'sent'            
+                status: 'sent',
+                dropdownShow: false            
                 }
             );       
 
@@ -133,7 +153,8 @@ let app = new Vue ({
                 {
                     text: 'OK',
                     date: '11/02/2021 14:32:00',
-                    status: 'received'  
+                    status: 'received',
+                    dropdownShow: false  
                 }
 
             );}, 1000);
@@ -149,6 +170,10 @@ let app = new Vue ({
                 }
             }
         },
+        attivaDropdown : function(indice){
+            this.messages[indice].dropdownShow = !this.messages[indice].dropdownShow;
+            console.log(this.messages[indice].dropdownShow)
+        }
 
     }
 });

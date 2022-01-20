@@ -88,10 +88,10 @@
                                 <img class="ms_chat-profile-pic mx-2" :src="'img/img'+ elemento.avatar+'.jpg'" alt="">
                                 <div class="ms_chat-info">
                                     <strong>{{elemento.name}}</strong> <br>
-                                    <span>{{elemento.messages.at(-1).text}}</span> 
+                                    <p>{{elemento.messages.at(-1).text}}</p> 
                                 </div>
                                 <div class="ms_message-hour">{{elemento.messages.at(-1).date}}</div>
-                               
+                                                              
                             </div>
 
                         </div>
@@ -104,10 +104,24 @@
 
                                 <div v-for="(messaggio, indice) in contacts[attivo].messages" 
                                 :class="'ms_' + messaggio.status" 
-                                class="col-12 my-2 mx-5 d-flex flex-column justify-content-center">
-                                    {{messaggio.text}}
-                                    <span class="ms_chat-message-hour align-self-end">{{messaggio.date}}</span>
+                                class="col-12 my-2 mx-5 d-flex justify-content-between align-items-center">
+                                    
+                                    <div>
+                                        <p>{{messaggio.text}}</p>
+                                    </div>
+
+                                    <div class="ms_hidden-toggle d-flex flex-column justify-content-between align-items-end">
+
+                                        <i @click="attivaDropdown(indice)" class="fas fa-chevron-down"></i>
+                                            <div class="ms_dropdown-message text-center" :class="{active: messaggio.dropdownShow}">
+                                                Elimina messaggio
+                                            </div>
+
+                                        <span class="ms_chat-message-hour align-self-end">{{messaggio.date}}</span>
+                                    </div>
+                                
                                 </div>
+
 
                             </div>
 
