@@ -42,10 +42,10 @@
                             <i class="fas fa-ellipsis-v mx-3 "></i>
                         </div>
                     </div>
-                    <div class="col d-flex justify-content-between align-items-center ms_userbar">
+                    <div v-if="attivo >= 0" class="col d-flex justify-content-between align-items-center ms_userbar">
                         <div>
-                            <img class="ms_profile-pic" src="http://pm1.narvii.com/5944/bf26f5a2e28b95211783e7f180f313af62fc0eb0_00.jpg" alt="">
-                            <span> <strong>Nome Utente</strong></span>
+                            <img class="ms_profile-pic" :src="'img/img'+ contacts[attivo].avatar +'.jpg'" alt="">
+                            <span> <strong>{{contacts[attivo].name}}</strong> </span>
                         </div>
                         <div class="ms_options-icons">
                             <i class="fas fa-search mx-2"></i>
@@ -78,14 +78,16 @@
                         <!--elenco contatti-->
                         <div class="ms_chat d-flex flex-column">
 
-                            <div v-for="(elemento,indice) in contacts" class="ms_single-chat my-3 d-flex justify-content-start align-items-center">
+                            <div v-for="(elemento,indice) in contacts" 
+                            @click="attivo = indice" 
+                            class="ms_single-chat my-3 d-flex justify-content-start align-items-center">
                                 
-                                <img class="ms_chat-profile-pic mx-2" :src="elemento.avatar" alt="">
+                                <img class="ms_chat-profile-pic mx-2" :src="'img/img'+ elemento.avatar+'.jpg'" alt="">
                                 <div class="ms_chat-info">
                                     <strong>{{elemento.name}}</strong> <br>
-                                    <span>Poi vedo</span> 
+                                    <span>{{elemento.messages.at(-1).text}}</span> 
                                 </div>
-                                <div class="ms_message-hour">18:07</div>
+                                <div class="ms_message-hour">{{elemento.messages.at(-1).date}}</div>
                                
                             </div>
 
@@ -95,25 +97,23 @@
                     <!--box della conversazione aperta e barra per scrivere il messaggio-->
                     <div class="col-8 p-0 ms_box-conversation">
                         <div class="ms_chat-conversation">
+                            <div v-if="attivo >= 0">
 
-                            <div class="ms_sent-message my-2 mx-5 d-flex flex-column justify-content-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sit mollitia ipsum reiciendis sequi facere, quos veniam fugiat pariatur eligendi, saepe temporibus hic expedita doloribus eos, quae quia itaque ducimus.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo reiciendis ipsam saepe! Corporis, ipsa voluptatum recusandae eaque voluptas consectetur quasi illo consequatur fugiat aut adipisci voluptatibus, sequi nulla dolore ipsum?
-                                <span class="ms_chat-message-hour align-self-end">20/12/2022 18:22:30'</span>
-                            </div>
+                                <div v-for="(messaggio, indice) in contacts[attivo].messages" 
+                                :class="'ms_' + messaggio.status" 
+                                class="col-12 my-2 mx-5 d-flex flex-column justify-content-center">
+                                    {{messaggio.text}}
+                                    <span class="ms_chat-message-hour align-self-end">{{messaggio.date}}</span>
+                                </div>
 
-                            <div class="ms_recevied-message my-2 mx-5 d-flex flex-column justify-content-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sit mollitia ipsum reiciendis sequi facere, quos veniam fugiat pariatur eligendi, saepe temporibus hic expedita doloribus eos, quae quia itaque ducimus.
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo reiciendis ipsam saepe! Corporis, ipsa voluptatum recusandae eaque voluptas consectetur quasi illo consequatur fugiat aut adipisci voluptatibus, sequi nulla dolore ipsum?
-                                <span class="ms_chat-message-hour align-self-end">20/12/2022 18:22:30'</span>
                             </div>
 
                         </div>
-
+                        
                         <div class="ms_input-message d-flex align-items-center">
                             <i class="far fa-grin"></i>
                             <i class="fas fa-paperclip"></i>
-                            <input class="w-100 " type="text" placeholder="Scrivi un messaggio">
+                            <input v-model="messaggioScritto" @keyup.enter="aggiungiMessaggio(); messaggioScritto= ''" class="w-100" type="text" placeholder="Scrivi un messaggio">
                             <i class="fas fa-microphone"></i>
                         </div>
                     </div>

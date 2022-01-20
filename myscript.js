@@ -1,10 +1,12 @@
 let app = new Vue ({
     el: '#miapp',
     data: {
+        attivo: -1,
+        messaggioScritto: "",
         contacts: [
             {
             name: 'Nonna',
-            avatar: 'img/img_01.jpg',
+            avatar: '_01',
             visible: true,
             messages: [
                 {
@@ -26,7 +28,7 @@ let app = new Vue ({
             },
             {
             name: 'Franco',
-            avatar: 'img/img_02.jpg',
+            avatar: '_02',
             visible: true,
             messages: [
                 {
@@ -48,7 +50,7 @@ let app = new Vue ({
             },
             {
             name: 'Samuele',
-            avatar: 'img/img_03.jpg',
+            avatar: '_03',
             visible: true,
             messages: [
                 {
@@ -70,7 +72,7 @@ let app = new Vue ({
             },
             {
                 name: 'Luisa',
-                avatar: 'img/img_04.jpg',
+                avatar: '_04',
                 visible: true,
                 messages: [
                 {
@@ -87,7 +89,7 @@ let app = new Vue ({
             },
             {
                 name: 'Alessia',
-                avatar: 'img/img_05.jpg',
+                avatar: '_05',
                 visible: true,
                 messages: [
                 {
@@ -108,6 +110,35 @@ let app = new Vue ({
     },
     
     methods: {
+
+        aggiungiMessaggio : function(){
+
+
+            this.contacts[this.attivo].messages.push(                
+                {
+                text: this.messaggioScritto,
+                date: '11/02/2021 14:32:00',
+                status: 'sent'            
+                }
+            );       
+
+            this.rispostAutomatica();
+
+ 
+        },
+        rispostAutomatica : function(){
+            setTimeout(() => {this.contacts[this.attivo].messages.push(
+            
+                {
+                    text: 'OK',
+                    date: '11/02/2021 14:32:00',
+                    status: 'received'  
+                }
+
+            );}, 1000);
+
+        }
+
 
     }
 });

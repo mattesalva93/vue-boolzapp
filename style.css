@@ -94,8 +94,8 @@
     color: lightgray
 }
 .ms_chat-conversation{
-    max-height: 94%;
     height: 94%;
+    max-height: 94%;
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
     background-size:cover;
     overflow-y: scroll;
@@ -110,17 +110,17 @@
     font-size: 1.5rem;
     margin: 0 15px;
 }
-.ms_sent-message,
-.ms_recevied-message{
+.ms_sent,
+.ms_received{
     min-height: 50px;
+    float:right;
     border-radius: 20px;
     background-color: #DCF8C6;
-    padding: 15px;
+    padding: 10px;
     font-size: 1rem;
-    float: right;
-    max-width: 75%;
+    max-width: 45%;
 }
-.ms_recevied-message{
+.ms_received{
     background-color: #ffffff;
     float: left;
 }
@@ -130,4 +130,5 @@
 }
 .ms_box-conversation{
     max-height: 100%;
+    height: 100%;
 }
