@@ -82,14 +82,15 @@
 
                             <div v-for="(elemento,indice) in contacts" 
                             @click="attivo = indice" 
-                            class="ms_single-chat my-3 d-flex justify-content-start align-items-center">
+                            class="ms_single-chat my-3 d-flex justify-content-start align-items-center"
+                            v-if="elemento.visible == true">
                                 
-                                <img v-if="elemento.visible == true" class="ms_chat-profile-pic mx-2" :src="'img/img'+ elemento.avatar+'.jpg'" alt="">
-                                <div v-if="elemento.visible == true" class="ms_chat-info">
+                                <img class="ms_chat-profile-pic mx-2" :src="'img/img'+ elemento.avatar+'.jpg'" alt="">
+                                <div class="ms_chat-info">
                                     <strong>{{elemento.name}}</strong> <br>
                                     <span>{{elemento.messages.at(-1).text}}</span> 
                                 </div>
-                                <div v-if="elemento.visible == true" class="ms_message-hour">{{elemento.messages.at(-1).date}}</div>
+                                <div class="ms_message-hour">{{elemento.messages.at(-1).date}}</div>
                                
                             </div>
 

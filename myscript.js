@@ -3,6 +3,7 @@ let app = new Vue ({
     data: {
         attivo: -1,
         messaggioScritto: "",
+        inputUtente: "",
         contacts: [
             {
             name: 'Nonna',
@@ -140,8 +141,8 @@ let app = new Vue ({
         },
         ricercaContatti : function(){
             console.log(this.inputUtente);
-            for(i = 0; i<contacts.length; i++){
-                if(this.contacts[i].name.includes(this.inputUtente)){
+            for(i = 0; i<this.contacts.length; i++){
+                if(this.contacts[i].name.toLowerCase().includes(this.inputUtente)){
                     this.contacts[i].visible = true;
                 }else{
                     this.contacts[i].visible = false;
