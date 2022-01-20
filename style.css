@@ -142,7 +142,7 @@
 .ms_hidden-toggle i{
     display: none;
 }
-.ms_hidden-toggle:hover > i{
+.ms_chat-balloon:hover  i{
     display: inline-block;
 }
 

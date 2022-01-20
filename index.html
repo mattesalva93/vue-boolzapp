@@ -104,16 +104,17 @@
 
                                 <div v-for="(messaggio, indice) in contacts[attivo].messages" 
                                 :class="'ms_' + messaggio.status" 
-                                class="col-12 my-2 mx-5 d-flex justify-content-between align-items-center">
+                                class="col-12 ms_chat-balloon my-2 mx-5 d-flex justify-content-between align-items-center">
                                     
                                     <div>
                                         <p>{{messaggio.text}}</p>
                                     </div>
 
-                                    <div class="ms_hidden-toggle d-flex flex-column justify-content-between align-items-end">
+                                    <div class="ms_hidden-toggle d-flex flex-column justify-content-between align-items-end"
+                                    @mouseleave="disattivaDropdown(indice)">
 
                                         <i @click="attivaDropdown(indice)" class="fas fa-chevron-down"></i>
-                                            <div class="ms_dropdown-message text-center" :class="{active: messaggio.dropdownShow}">
+                                            <div @click="rimuoviMessaggio(indice)" class="ms_dropdown-message text-center" :class="{active: messaggio.dropdownShow}">
                                                 Elimina messaggio
                                             </div>
 
@@ -131,7 +132,7 @@
 
                             <i  v-if="attivo >= 0" class="far fa-grin"></i>
                             <i  v-if="attivo >= 0" class="fas fa-paperclip"></i>
-                            <input  v-if="attivo >= 0" v-model="messaggioScritto" @keyup.enter="aggiungiMessaggio; messaggioScritto= ''" class="w-100" type="text" placeholder="Scrivi un messaggio">
+                            <input  v-if="attivo >= 0" v-model="messaggioScritto" @keyup.enter="aggiungiMessaggio" class="w-100" type="text" placeholder="Scrivi un messaggio">
                             <i  v-if="attivo >= 0" class="fas fa-microphone"></i>
 
                         </div>

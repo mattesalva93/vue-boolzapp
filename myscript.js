@@ -4,7 +4,6 @@ let app = new Vue ({
         attivo: -1,
         messaggioScritto: "",
         inputUtente: "",
-        chatIndice: 0,
         contacts: [
             {
             name: 'Nonna',
@@ -85,10 +84,10 @@ let app = new Vue ({
                 ],
             },
             {
-                name: 'Luisa',
-                avatar: '_04',
-                visible: true,
-                messages: [
+            name: 'Luisa',
+            avatar: '_04',
+            visible: true,
+            messages: [
                 {
                 date: '10/01/2020 15:30:55',
                 text: 'Lo sai che ha aperto una nuova pizzeria?',
@@ -106,10 +105,10 @@ let app = new Vue ({
                 ],
             },
             {
-                name: 'Alessia',
-                avatar: '_05',
-                visible: true,
-                messages: [
+            name: 'Alessia',
+            avatar: '_05',
+            visible: true,
+            messages: [
                 {
                 date: '11/02/2021 14:30:55',
                 text: 'Il nostro rapporto non funziona più, finisce qua!',
@@ -124,8 +123,39 @@ let app = new Vue ({
                 }
                 ],
             },
+            {
+            name: 'Manina',
+            avatar: '_06',
+            visible: true,
+            messages: [
+                {
+                date: '11/02/2021 14:30:55',
+                text: 'Sono stato un buon Pokèmon in questa nuzlocke?',
+                status: 'received',
+                dropdownShow: false
+                },
+                {
+                date: '11/02/2021 14:32:00',
+                text: 'No',
+                status: 'sent',
+                dropdownShow: false
+                },
+                {
+                date: '11/02/2021 14:30:55',
+                text: ':C',
+                status: 'received',
+                dropdownShow: false
+                },
+                {
+                date: '11/02/2021 14:32:00',
+                text: 'Sei stato il migliore...',
+                status: 'sent',
+                dropdownShow: false
+                },
+                ],
+            },
 
-            ]
+        ],
 
     },
     
@@ -139,11 +169,12 @@ let app = new Vue ({
                 text: this.messaggioScritto,
                 date: '11/02/2021 14:32:00',
                 status: 'sent',
-                dropdownShow: false            
+                dropdownShow: false,            
                 }
             );       
 
             this.rispostaAutomatica();
+            this.messaggioScritto = "";
 
  
         },
@@ -151,10 +182,10 @@ let app = new Vue ({
             setTimeout(() => {this.contacts[this.attivo].messages.push(
             
                 {
-                    text: 'OK',
+                    text: 'Ok',
                     date: '11/02/2021 14:32:00',
                     status: 'received',
-                    dropdownShow: false  
+                    dropdownShow: false,  
                 }
 
             );}, 1000);
@@ -162,6 +193,7 @@ let app = new Vue ({
         },
         ricercaContatti : function(){
             console.log(this.inputUtente);
+
             for(i = 0; i<this.contacts.length; i++){
                 if(this.contacts[i].name.toLowerCase().includes(this.inputUtente)){
                     this.contacts[i].visible = true;
@@ -171,9 +203,15 @@ let app = new Vue ({
             }
         },
         attivaDropdown : function(indice){
-            this.messages[indice].dropdownShow = !this.messages[indice].dropdownShow;
-            console.log(this.messages[indice].dropdownShow)
+            this.contacts[this.attivo].messages[indice].dropdownShow = !this.contacts[this.attivo].messages[indice].dropdownShow;
+        },
+        disattivaDropdown : function(indice){
+            this.contacts[this.attivo].messages[indice].dropdownShow = false;
+        },
+        rimuoviMessaggio : function(indice){
+            this.contacts[this.attivo].messages.splice(indice,1);
         }
+
 
     }
 });
