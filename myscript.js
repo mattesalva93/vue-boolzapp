@@ -122,11 +122,11 @@ let app = new Vue ({
                 }
             );       
 
-            this.rispostAutomatica();
+            this.rispostaAutomatica();
 
  
         },
-        rispostAutomatica : function(){
+        rispostaAutomatica : function(){
             setTimeout(() => {this.contacts[this.attivo].messages.push(
             
                 {
@@ -137,8 +137,17 @@ let app = new Vue ({
 
             );}, 1000);
 
-        }
-
+        },
+        ricercaContatti : function(){
+            console.log(this.inputUtente);
+            for(i = 0; i<contacts.length; i++){
+                if(this.contacts[i].name.includes(this.inputUtente)){
+                    this.contacts[i].visible = true;
+                }else{
+                    this.contacts[i].visible = false;
+                }
+            }
+        },
 
     }
 });

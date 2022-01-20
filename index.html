@@ -42,12 +42,14 @@
                             <i class="fas fa-ellipsis-v mx-3 "></i>
                         </div>
                     </div>
-                    <div v-if="attivo >= 0" class="col d-flex justify-content-between align-items-center ms_userbar">
+                    <div class="col d-flex justify-content-between align-items-center ms_userbar">
                         <div>
-                            <img class="ms_profile-pic" :src="'img/img'+ contacts[attivo].avatar +'.jpg'" alt="">
-                            <span> <strong>{{contacts[attivo].name}}</strong> </span>
+                            <img v-if="attivo >= 0" class="ms_profile-pic" :src="'img/img'+ contacts[attivo].avatar +'.jpg'" alt="">
+
+                            <span v-if="attivo >= 0"> <strong>{{contacts[attivo].name}}</strong> </span>
+                        
                         </div>
-                        <div class="ms_options-icons">
+                        <div  v-if="attivo >= 0" class="ms_options-icons">
                             <i class="fas fa-search mx-2"></i>
                             <i class="fas fa-ellipsis-v mx-3"></i>
                         </div>
@@ -68,7 +70,7 @@
                         <!--barra della ricerca contatti-->
                         <div class="ms_chat-search-bar d-flex justify-content-center align-items-center"> 
                             <i class="fas fa-search mx-1"></i>
-                            <input class="w-100 mx-2" type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input class="w-100 mx-2" type="text" placeholder="Cerca o inizia una nuova chat" v-model="inputUtente" @keyup="ricercaContatti">
                         </div>
                         <!--chat archiviate-->
                         <div class="ms_chat-archiviate d-flex justify-content-start align-items-center">
@@ -82,12 +84,12 @@
                             @click="attivo = indice" 
                             class="ms_single-chat my-3 d-flex justify-content-start align-items-center">
                                 
-                                <img class="ms_chat-profile-pic mx-2" :src="'img/img'+ elemento.avatar+'.jpg'" alt="">
-                                <div class="ms_chat-info">
+                                <img v-if="elemento.visible == true" class="ms_chat-profile-pic mx-2" :src="'img/img'+ elemento.avatar+'.jpg'" alt="">
+                                <div v-if="elemento.visible == true" class="ms_chat-info">
                                     <strong>{{elemento.name}}</strong> <br>
                                     <span>{{elemento.messages.at(-1).text}}</span> 
                                 </div>
-                                <div class="ms_message-hour">{{elemento.messages.at(-1).date}}</div>
+                                <div v-if="elemento.visible == true" class="ms_message-hour">{{elemento.messages.at(-1).date}}</div>
                                
                             </div>
 
@@ -111,10 +113,12 @@
                         </div>
                         
                         <div class="ms_input-message d-flex align-items-center">
-                            <i class="far fa-grin"></i>
-                            <i class="fas fa-paperclip"></i>
-                            <input v-model="messaggioScritto" @keyup.enter="aggiungiMessaggio(); messaggioScritto= ''" class="w-100" type="text" placeholder="Scrivi un messaggio">
-                            <i class="fas fa-microphone"></i>
+
+                            <i  v-if="attivo >= 0" class="far fa-grin"></i>
+                            <i  v-if="attivo >= 0" class="fas fa-paperclip"></i>
+                            <input  v-if="attivo >= 0" v-model="messaggioScritto" @keyup.enter="aggiungiMessaggio; messaggioScritto= ''" class="w-100" type="text" placeholder="Scrivi un messaggio">
+                            <i  v-if="attivo >= 0" class="fas fa-microphone"></i>
+
                         </div>
                     </div>
 
