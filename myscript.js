@@ -158,6 +158,11 @@ let app = new Vue ({
         ],
 
     },
+    updated: function () {
+        let box = document.querySelector(".ms_chat-conversation");
+        box.scrollTop = box.scrollHeight;
+      },
+    
     
     methods: {
 
@@ -167,23 +172,23 @@ let app = new Vue ({
             this.contacts[this.attivo].messages.push(                
                 {
                 text: this.messaggioScritto,
-                date: '11/02/2021 14:32:00',
+                date: dayjs().format("DD/MM/YY HH:mm:ss"),
                 status: 'sent',
                 dropdownShow: false,            
                 }
             );       
-
-            this.rispostaAutomatica();
+            const indiceContatto = this.attivo;
+            this.rispostaAutomatica(indiceContatto);
             this.messaggioScritto = "";
 
  
         },
-        rispostaAutomatica : function(){
-            setTimeout(() => {this.contacts[this.attivo].messages.push(
+        rispostaAutomatica : function(indiceContatto){
+            setTimeout(() => {this.contacts[indiceContatto].messages.push(
             
                 {
                     text: 'Ok',
-                    date: '11/02/2021 14:32:00',
+                    date: dayjs().format("DD/MM/YY HH:mm:ss"),
                     status: 'received',
                     dropdownShow: false,  
                 }
